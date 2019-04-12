@@ -1,6 +1,43 @@
 declare namespace global {
+    /**
+     * The scoped Workflow API provides methods that can be used in an activity
+     * definition script.
+     *
+     * There are no constructors for creating an instance of a scoped workflow object.
+     * Instead, use the global workflow object available in activity scripts. This
+     * workflow object is available in any script location inside a workflow.
+     */
     class Workflow {
         constructor();
+
+        /**
+         * Returns the workflow variables.
+         * @returns Contains the workflow variables as name value pairs.
+         * @example
+         *
+         * var variables = workflow.inputs();
+         */
+        inputs() {}
+
+        /**
+         * Returns the workflow's result.
+         * @returns The workflow's result
+         * @example
+         *
+         * var value = workflow.removeVariable("task");
+         */
+        result() {}
+
+        /**
+         * Adds a debug message to the log.
+         * @param message The message to add to the log.
+         * @param {Object} args Arguments to add to the message.
+         * @returns The message added to the log.
+         * @example
+         * var loggedMessage = workflow.debug("All is well");
+         */
+        debug(message: string, args: object) {}
+
         broadcastEvent(contextId: string, eventName: string): void;
         cancel(record: ScopedGlideRecord): void;
         cancelContext(context: ScopedGlideRecord): void;
